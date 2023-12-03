@@ -1,12 +1,14 @@
 <template>
   <h1>{{ title }}</h1>
-  <input type="text" ref="name">
-  <button @click="handleClick">Click me</button>
+  <ModalWindow/>
 </template>
 
 <script>
+import ModalWindow from './components/ModalWindow.vue'
+
 export default {
   name: 'App',
+  components: { ModalWindow },
   data() {
     return {
       title: 'First vue app'
