@@ -1,6 +1,10 @@
 <template>
   <h1>{{ title }}</h1>
-  <ModalWindow :header="header " :text="text" theme="sale" />
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <ModalWindow :header="header" :text="text" theme="sale" @close="toggleModal"/> 
+  </div>
+  <button @click="toggleModal">Open modal</button>
 </template>
 
 <script>
@@ -13,30 +17,25 @@ export default {
   data() {
     return {
       title: "First vue app",
-      header: 'Sign up',
-      text: 'Better faster'
+      header: "Sign up",
+      text: "Better faster",
+      showModal: false
     };
   },
   methods: {
-    handleClick() {
-      console.log(this.$refs.name);
-      this.$refs.name.classList.add("active");
-      this.$refs.name.focus();
-    },
-  },
+    toggleModal() {
+      this.showModal = !this.showModal
+    }
+  }
 };
 </script>
 
 <style>
 #app {
   text-align: center;
+  margin: 120px auto;
 }
-h1 {
-  display: inline-block;
-  text-align: center;
-  border-bottom: 1px solid violet;
-  margin: 100px 600px;
-}
+
 .modal.sale {
   background: crimson;
   color: white;
